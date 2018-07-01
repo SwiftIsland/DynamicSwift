@@ -150,58 +150,58 @@ class PListSerializerTests: XCTestCase {
             """)
     }
 
-//    func testEnums() {
-//        let companions: Any = [
-//            "companions": [
-//                Companion(
-//                    name: "Fuki",
-//                    age: 8,
-//                    race: .dog,
-//                    picture: URL(string: "https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0")!),
-//                Companion(
-//                    name: "Gizmo",
-//                    age: 11,
-//                    race: .cat,
-//                    picture: URL(string: "https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0")!),
-//            ]
-//        ]
-//
-//        let serializer = PListSerializer()
-//        var output = ""
-//        serializer.serialize(companions, to: &output)
-//
-//        XCTAssertEqual(output, """
-//            <?xml version="1.0" encoding="UTF-8"?>
-//            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-//            <plist version="1.0">
-//            <dict>
-//                <key>companions</key>
-//                <array>
-//                    <dict>
-//                        <key>age</key>
-//                        <integer>8</integer>
-//                        <key>name</key>
-//                        <string>Fuki</string>
-//                        <key>picture</key>
-//                        <string>https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0</string>
-//                        <key>race</key>
-//                        <string>dog</string>
-//                    </dict>
-//                    <dict>
-//                        <key>age</key>
-//                        <integer>11</integer>
-//                        <key>name</key>
-//                        <string>Gizmo</string>
-//                        <key>picture</key>
-//                        <string>https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0</string>
-//                        <key>race</key>
-//                        <string>cat</string>
-//                    </dict>
-//                </array>
-//            </dict>
-//            </plist>
-//            """)
-//    }
+    func testEnums() {
+        let companions: Any = [
+            "companions": [
+                Companion(
+                    name: "Fuki",
+                    age: 8,
+                    race: .dog,
+                    picture: URL(string: "https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0")!),
+                Companion(
+                    name: "Gizmo",
+                    age: 11,
+                    race: .cat,
+                    picture: URL(string: "https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0")!),
+            ]
+        ]
+
+        let serializer = PListSerializer()
+        var output = ""
+        serializer.serialize(companions, to: &output)
+
+        XCTAssertEqual(output, """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <dict>
+                <key>companions</key>
+                <array>
+                    <dict>
+                        <key>age</key>
+                        <integer>8</integer>
+                        <key>name</key>
+                        <string>Fuki</string>
+                        <key>picture</key>
+                        <string>https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0</string>
+                        <key>race</key>
+                        <string>dog</string>
+                    </dict>
+                    <dict>
+                        <key>age</key>
+                        <integer>11</integer>
+                        <key>name</key>
+                        <string>Gizmo</string>
+                        <key>picture</key>
+                        <string>https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0</string>
+                        <key>race</key>
+                        <string>cat</string>
+                    </dict>
+                </array>
+            </dict>
+            </plist>
+            """)
+    }
 
 //    func testTypeComments() {
 //        let companions: Any = [

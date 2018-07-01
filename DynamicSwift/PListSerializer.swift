@@ -124,6 +124,15 @@ private extension PListSerializer {
 
     func serialize<T: TextOutputStream>(reflecting object: Any, to stream: inout T, indentationLevel: Int) {
         let mirror = Mirror(reflecting: object)
+
+        guard mirror.displayStyle != .enum else {
+            serialize(
+                string: String(describing: object),
+                to: &stream,
+                indentationLevel: indentationLevel)
+            return
+        }
+
         let dictionary = Dictionary(uniqueKeysWithValues: mirror.children
             .filter({ label, _ in label != nil })
             .map({ label, value in (label!, value) }))
