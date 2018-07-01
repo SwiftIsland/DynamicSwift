@@ -168,12 +168,12 @@ class JSONTests: XCTestCase {
         XCTAssertNotEqual(json, ["name": "Objective-C", "isAwesome": false])
     }
 
-//    func testArrayAccess() {
-//        let json: JSON = [true, "Swift", 42]
-//        XCTAssertEqual(json[2], 42)
-//        XCTAssertTrue(json[2][0].isUndefined)
-//        XCTAssertTrue(json[3].isUndefined)
-//    }
+    func testArrayAccess() {
+        let json: JSON = [true, "Swift", 42]
+        XCTAssertEqual(json[2], 42)
+        XCTAssertTrue(json[2][0].isUndefined)
+        XCTAssertTrue(json[3].isUndefined)
+    }
 
 //    func testDynamicMemberLookup() {
 //        let json: JSON = [

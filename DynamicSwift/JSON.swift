@@ -189,3 +189,15 @@ extension JSON: Equatable {
         }
     }
 }
+
+public extension JSON {
+    subscript(index: Int) -> JSON {
+        get {
+            if let array = array, array.count > index {
+                return array[index]
+            } else {
+                return .undefined
+            }
+        }
+    }
+}
