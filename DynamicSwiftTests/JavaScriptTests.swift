@@ -2,57 +2,57 @@ import XCTest
 import DynamicSwift
 
 class JavaScriptTests: XCTestCase {
-//    func testHelpers() throws {
-//        var value: JSValue = nil
-//        XCTAssertTrue(value.isNull)
-//        XCTAssertFalse(value.isBool)
-//        XCTAssertFalse(value.isNumber)
-//        XCTAssertFalse(value.isString)
-//        XCTAssertNil(value.bool)
-//        XCTAssertNil(value.int)
-//        XCTAssertNil(value.double)
-//        XCTAssertNil(value.string)
-//
-//        value = true
-//        XCTAssertFalse(value.isNull)
-//        XCTAssertTrue(value.isBool)
-//        XCTAssertFalse(value.isNumber)
-//        XCTAssertFalse(value.isString)
-//        XCTAssertEqual(value.bool, true)
-//        XCTAssertNil(value.int)
-//        XCTAssertNil(value.double)
-//        XCTAssertNil(value.string)
-//
-//        value = 14
-//        XCTAssertFalse(value.isNull)
-//        XCTAssertFalse(value.isBool)
-//        XCTAssertTrue(value.isNumber)
-//        XCTAssertFalse(value.isString)
-//        XCTAssertNil(value.bool)
-//        XCTAssertEqual(value.int, 14)
-//        XCTAssertEqual(value.double, 14.0)
-//        XCTAssertNil(value.string)
-//
-//        value = 5.67
-//        XCTAssertFalse(value.isNull)
-//        XCTAssertFalse(value.isBool)
-//        XCTAssertTrue(value.isNumber)
-//        XCTAssertFalse(value.isString)
-//        XCTAssertNil(value.bool)
-//        XCTAssertEqual(value.int, 5)
-//        XCTAssertEqual(value.double!, 5.67, accuracy: 0.001)
-//        XCTAssertNil(value.string)
-//
-//        value = "Hello World"
-//        XCTAssertFalse(value.isNull)
-//        XCTAssertFalse(value.isBool)
-//        XCTAssertFalse(value.isNumber)
-//        XCTAssertTrue(value.isString)
-//        XCTAssertNil(value.bool)
-//        XCTAssertNil(value.int)
-//        XCTAssertNil(value.double)
-//        XCTAssertEqual(value.string, "Hello World")
-//    }
+    func testHelpers() throws {
+        var value: JSValue = nil
+        XCTAssertTrue(value.isNull)
+        XCTAssertFalse(value.isBool)
+        XCTAssertFalse(value.isNumber)
+        XCTAssertFalse(value.isString)
+        XCTAssertNil(value.bool)
+        XCTAssertNil(value.int)
+        XCTAssertNil(value.double)
+        XCTAssertNil(value.string)
+
+        value = true
+        XCTAssertFalse(value.isNull)
+        XCTAssertTrue(value.isBool)
+        XCTAssertFalse(value.isNumber)
+        XCTAssertFalse(value.isString)
+        XCTAssertEqual(value.bool, true)
+        XCTAssertNil(value.int)
+        XCTAssertNil(value.double)
+        XCTAssertNil(value.string)
+
+        value = 14
+        XCTAssertFalse(value.isNull)
+        XCTAssertFalse(value.isBool)
+        XCTAssertTrue(value.isNumber)
+        XCTAssertFalse(value.isString)
+        XCTAssertNil(value.bool)
+        XCTAssertEqual(value.int, 14)
+        XCTAssertEqual(value.double, 14.0)
+        XCTAssertNil(value.string)
+
+        value = 5.67
+        XCTAssertFalse(value.isNull)
+        XCTAssertFalse(value.isBool)
+        XCTAssertTrue(value.isNumber)
+        XCTAssertFalse(value.isString)
+        XCTAssertNil(value.bool)
+        XCTAssertEqual(value.int, 5)
+        XCTAssertEqual(value.double!, 5.67, accuracy: 0.001)
+        XCTAssertNil(value.string)
+
+        value = "Hello World"
+        XCTAssertFalse(value.isNull)
+        XCTAssertFalse(value.isBool)
+        XCTAssertFalse(value.isNumber)
+        XCTAssertTrue(value.isString)
+        XCTAssertNil(value.bool)
+        XCTAssertNil(value.int)
+        XCTAssertNil(value.double)
+        XCTAssertEqual(value.string, "Hello World")
+    }
 
 //    func testArrayAccessAndDynamicMemberLookup() throws {
 //        try JavaScript.import("""
