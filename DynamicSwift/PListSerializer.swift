@@ -8,7 +8,10 @@ enum SerializationError: Error {
 }
 
 public final class PListSerializer {
-    public init() {
+    private let shouldAnnotateTypes: Bool
+
+    public init(shouldAnnotateTypes: Bool = false) {
+        self.shouldAnnotateTypes = shouldAnnotateTypes
     }
 
     public func serialize<T: TextOutputStream>(_ object: Any, to stream: inout T) {
@@ -33,10 +36,17 @@ private extension PListSerializer {
     func write<T: TextOutputStream>(
         _ string: String,
         to stream: inout T,
-        indentationLevel: Int
+        indentationLevel: Int,
+        type: Any.Type? = nil
     ) {
         let indentation = String(repeating: "    ", count: indentationLevel)
-        stream.write("\(indentation)\(string)\n")
+        stream.write("\(indentation)\(string)")
+
+        if let type = type, shouldAnnotateTypes {
+            stream.write(" <!-- \(String(describing: type)) -->")
+        }
+
+        stream.write("\n")
     }
 
     func serialize<T: TextOutputStream>(_ object: Any, to stream: inout T, indentationLevel: Int) {
@@ -61,7 +71,8 @@ private extension PListSerializer {
             serialize(
                 string: stringConvertible.description,
                 to: &stream,
-                indentationLevel: indentationLevel)
+                indentationLevel: indentationLevel,
+                type: type(of: stringConvertible))
         default:
             serialize(reflecting: object, to: &stream, indentationLevel: indentationLevel)
         }
@@ -82,9 +93,10 @@ private extension PListSerializer {
     func serialize<T: TextOutputStream>(
         string: String,
         to stream: inout T,
-        indentationLevel: Int
+        indentationLevel: Int,
+        type: Any.Type? = nil
     ) {
-        write("<string>\(string)</string>", to: &stream, indentationLevel: indentationLevel)
+        write("<string>\(string)</string>", to: &stream, indentationLevel: indentationLevel, type: type)
     }
 
     func serialize<T: TextOutputStream>(date: Date, to stream: inout T, indentationLevel: Int) {
@@ -110,9 +122,10 @@ private extension PListSerializer {
     func serialize<T: TextOutputStream>(
         dictionary: [String: Any],
         to stream: inout T,
-        indentationLevel: Int
+        indentationLevel: Int,
+        type: Any.Type? = nil
     ) {
-        write("<dict>", to: &stream, indentationLevel: indentationLevel)
+        write("<dict>", to: &stream, indentationLevel: indentationLevel, type: type)
 
         for (key, value) in dictionary.sorted(by: { $0.0 < $1.0 }) {
             write("<key>\(key)</key>", to: &stream, indentationLevel: indentationLevel + 1)
@@ -129,13 +142,14 @@ private extension PListSerializer {
             serialize(
                 string: String(describing: object),
                 to: &stream,
-                indentationLevel: indentationLevel)
+                indentationLevel: indentationLevel,
+                type: mirror.subjectType)
             return
         }
 
         let dictionary = Dictionary(uniqueKeysWithValues: mirror.children
             .filter({ label, _ in label != nil })
             .map({ label, value in (label!, value) }))
-        serialize(dictionary: dictionary, to: &stream, indentationLevel: indentationLevel)
+        serialize(dictionary: dictionary, to: &stream, indentationLevel: indentationLevel, type: mirror.subjectType)
     }
 }
