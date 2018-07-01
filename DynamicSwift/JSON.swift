@@ -1,5 +1,6 @@
 import Foundation
 
+@dynamicMemberLookup
 public enum JSON {
     case undefined
     case null
@@ -198,6 +199,16 @@ public extension JSON {
             } else {
                 return .undefined
             }
+        }
+    }
+}
+
+public extension JSON {
+    subscript(dynamicMember member: String) -> JSON {
+        if let dictionary = dictionary, let value = dictionary[member] {
+            return value
+        } else {
+            return .undefined
         }
     }
 }

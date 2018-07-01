@@ -175,25 +175,25 @@ class JSONTests: XCTestCase {
         XCTAssertTrue(json[3].isUndefined)
     }
 
-//    func testDynamicMemberLookup() {
-//        let json: JSON = [
-//            "conferences": [
-//                [
-//                    "name": "Swift Island",
-//                    "isFull": true,
-//                    "longitude": 53.079758,
-//                    "latitude": 4.802859
-//                ], [
-//                    "name": "Swift Alps",
-//                    "numberOfDays": 2,
-//                    "isFull": false,
-//                    "longitude": 46.305125,
-//                    "latitude": 7.462249
-//                ]
-//            ]
-//        ]
-//
-//        XCTAssertEqual(json.conferences[0].name, "Swift Island")
-//        XCTAssertTrue(json.confs[0].name.isUndefined)
-//    }
+    func testDynamicMemberLookup() {
+        let json: JSON = [
+            "conferences": [
+                [
+                    "name": "Swift Island",
+                    "isFull": true,
+                    "longitude": 53.079758,
+                    "latitude": 4.802859
+                ], [
+                    "name": "Swift Alps",
+                    "numberOfDays": 2,
+                    "isFull": false,
+                    "longitude": 46.305125,
+                    "latitude": 7.462249
+                ]
+            ]
+        ]
+
+        XCTAssertEqual(json.conferences[0].name, "Swift Island")
+        XCTAssertTrue(json.confs[0].name.isUndefined)
+    }
 }
