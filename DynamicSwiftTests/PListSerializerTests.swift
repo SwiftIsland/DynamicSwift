@@ -2,72 +2,72 @@ import XCTest
 import DynamicSwift
 
 class PListSerializerTests: XCTestCase {
-//    func testBasicTypes() {
-//        let conferences: Any = [
-//            [
-//                "name": "Swift Island",
-//                "startDate": Date(year: 2018, month: 7, day: 4),
-//                "endDate": Date(year: 2018, month: 7, day: 5),
-//                "isFull": true,
-//                "longitude": 53.079758,
-//                "latitude": 4.802859,
-//                "secret": Data(base64Encoded: "aHR0cHM6Ly95b3V0dS5iZS9kUXc0dzlXZ1hjUQ==")!
-//            ], [
-//                "name": "Swift Alps",
-//                "date": Date(year: 2018, month: 11),
-//                "numberOfDays": 2,
-//                "isFull": false,
-//                "longitude": 46.305125,
-//                "latitude": 7.462249,
-//                "secret": Data(base64Encoded: "aHR0cHM6Ly95b3V0dS5iZS9WaGhfR2VCUE9ocw==")!
-//            ]
-//        ]
-//
-//        let serializer = PListSerializer()
-//        var output = ""
-//        serializer.serialize(conferences, to: &output)
-//
-//        XCTAssertEqual(output, """
-//            <?xml version="1.0" encoding="UTF-8"?>
-//            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-//            <plist version="1.0">
-//            <array>
-//                <dict>
-//                    <key>endDate</key>
-//                    <date>2018-07-04T22:00:00Z</date>
-//                    <key>isFull</key>
-//                    <true/>
-//                    <key>latitude</key>
-//                    <real>4.802859</real>
-//                    <key>longitude</key>
-//                    <real>53.079758</real>
-//                    <key>name</key>
-//                    <string>Swift Island</string>
-//                    <key>secret</key>
-//                    <data>aHR0cHM6Ly95b3V0dS5iZS9kUXc0dzlXZ1hjUQ==</data>
-//                    <key>startDate</key>
-//                    <date>2018-07-03T22:00:00Z</date>
-//                </dict>
-//                <dict>
-//                    <key>date</key>
-//                    <date>2018-10-31T23:00:00Z</date>
-//                    <key>isFull</key>
-//                    <false/>
-//                    <key>latitude</key>
-//                    <real>7.462249</real>
-//                    <key>longitude</key>
-//                    <real>46.305125</real>
-//                    <key>name</key>
-//                    <string>Swift Alps</string>
-//                    <key>numberOfDays</key>
-//                    <integer>2</integer>
-//                    <key>secret</key>
-//                    <data>aHR0cHM6Ly95b3V0dS5iZS9WaGhfR2VCUE9ocw==</data>
-//                </dict>
-//            </array>
-//            </plist>
-//            """)
-//    }
+    func testBasicTypes() {
+        let conferences: Any = [
+            [
+                "name": "Swift Island",
+                "startDate": Date(year: 2018, month: 7, day: 4),
+                "endDate": Date(year: 2018, month: 7, day: 5),
+                "isFull": true,
+                "longitude": 53.079758,
+                "latitude": 4.802859,
+                "secret": Data(base64Encoded: "aHR0cHM6Ly95b3V0dS5iZS9kUXc0dzlXZ1hjUQ==")!
+            ], [
+                "name": "Swift Alps",
+                "date": Date(year: 2018, month: 11),
+                "numberOfDays": 2,
+                "isFull": false,
+                "longitude": 46.305125,
+                "latitude": 7.462249,
+                "secret": Data(base64Encoded: "aHR0cHM6Ly95b3V0dS5iZS9WaGhfR2VCUE9ocw==")!
+            ]
+        ]
+
+        let serializer = PListSerializer()
+        var output = ""
+        serializer.serialize(conferences, to: &output)
+
+        XCTAssertEqual(output, """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <array>
+                <dict>
+                    <key>endDate</key>
+                    <date>2018-07-04T22:00:00Z</date>
+                    <key>isFull</key>
+                    <true/>
+                    <key>latitude</key>
+                    <real>4.802859</real>
+                    <key>longitude</key>
+                    <real>53.079758</real>
+                    <key>name</key>
+                    <string>Swift Island</string>
+                    <key>secret</key>
+                    <data>aHR0cHM6Ly95b3V0dS5iZS9kUXc0dzlXZ1hjUQ==</data>
+                    <key>startDate</key>
+                    <date>2018-07-03T22:00:00Z</date>
+                </dict>
+                <dict>
+                    <key>date</key>
+                    <date>2018-10-31T23:00:00Z</date>
+                    <key>isFull</key>
+                    <false/>
+                    <key>latitude</key>
+                    <real>7.462249</real>
+                    <key>longitude</key>
+                    <real>46.305125</real>
+                    <key>name</key>
+                    <string>Swift Alps</string>
+                    <key>numberOfDays</key>
+                    <integer>2</integer>
+                    <key>secret</key>
+                    <data>aHR0cHM6Ly95b3V0dS5iZS9WaGhfR2VCUE9ocw==</data>
+                </dict>
+            </array>
+            </plist>
+            """)
+    }
 
 //    func testArbitraryTypes() {
 //        let bestTopics = [
