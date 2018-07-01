@@ -147,9 +147,14 @@ private extension PListSerializer {
             return
         }
 
-        let dictionary = Dictionary(uniqueKeysWithValues: mirror.children
-            .filter({ label, _ in label != nil })
-            .map({ label, value in (label!, value) }))
+        let allMirrors = sequence(first: mirror, next: { $0.superclassMirror })
+        let allProperties = allMirrors.flatMap({ mirror in
+            mirror.children
+                .filter({ label, _ in label != nil })
+                .map({ label, value in (label!, value) })
+        })
+        let dictionary = Dictionary(uniqueKeysWithValues: allProperties)
+        
         serialize(dictionary: dictionary, to: &stream, indentationLevel: indentationLevel, type: mirror.subjectType)
     }
 }

@@ -256,56 +256,56 @@ class PListSerializerTests: XCTestCase {
             """)
     }
 
-//    func testClasses() {
-//        let pets: Any = [
-//            "pets": [
-//                Dog(name: "Fuki",
-//                    age: 8,
-//                    picture: URL(string: "https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0")!,
-//                    breed: .pug),
-//                Cat(name: "Gizmo",
-//                    age: 11,
-//                    picture: URL(string: "https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0")!,
-//                    numberOfLivesLeft: 4),
-//            ]
-//        ]
-//
-//        let serializer = PListSerializer(shouldAnnotateTypes: true)
-//        var output = ""
-//        serializer.serialize(pets, to: &output)
-//
-//        XCTAssertEqual(output, """
-//            <?xml version="1.0" encoding="UTF-8"?>
-//            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-//            <plist version="1.0">
-//            <dict>
-//                <key>pets</key>
-//                <array>
-//                    <dict> <!-- Dog -->
-//                        <key>age</key>
-//                        <integer>8</integer>
-//                        <key>breed</key>
-//                        <string>pug</string> <!-- Breed -->
-//                        <key>name</key>
-//                        <string>Fuki</string>
-//                        <key>picture</key>
-//                        <string>https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0</string> <!-- URL -->
-//                    </dict>
-//                    <dict> <!-- Cat -->
-//                        <key>age</key>
-//                        <integer>11</integer>
-//                        <key>name</key>
-//                        <string>Gizmo</string>
-//                        <key>numberOfLivesLeft</key>
-//                        <integer>4</integer>
-//                        <key>picture</key>
-//                        <string>https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0</string> <!-- URL -->
-//                    </dict>
-//                </array>
-//            </dict>
-//            </plist>
-//            """)
-//    }
+    func testClasses() {
+        let pets: Any = [
+            "pets": [
+                Dog(name: "Fuki",
+                    age: 8,
+                    picture: URL(string: "https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0")!,
+                    breed: .pug),
+                Cat(name: "Gizmo",
+                    age: 11,
+                    picture: URL(string: "https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0")!,
+                    numberOfLivesLeft: 4),
+            ]
+        ]
+
+        let serializer = PListSerializer(shouldAnnotateTypes: true)
+        var output = ""
+        serializer.serialize(pets, to: &output)
+
+        XCTAssertEqual(output, """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <dict>
+                <key>pets</key>
+                <array>
+                    <dict> <!-- Dog -->
+                        <key>age</key>
+                        <integer>8</integer>
+                        <key>breed</key>
+                        <string>pug</string> <!-- Breed -->
+                        <key>name</key>
+                        <string>Fuki</string>
+                        <key>picture</key>
+                        <string>https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0</string> <!-- URL -->
+                    </dict>
+                    <dict> <!-- Cat -->
+                        <key>age</key>
+                        <integer>11</integer>
+                        <key>name</key>
+                        <string>Gizmo</string>
+                        <key>numberOfLivesLeft</key>
+                        <integer>4</integer>
+                        <key>picture</key>
+                        <string>https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0</string> <!-- URL -->
+                    </dict>
+                </array>
+            </dict>
+            </plist>
+            """)
+    }
 
 //    func testCustomization() {
 //        let companions: Any = [
