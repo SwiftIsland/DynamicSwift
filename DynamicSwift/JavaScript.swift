@@ -3,16 +3,28 @@ import JavaScriptCore
 @dynamicMemberLookup
 public final class JavaScript {
     public enum Error: Swift.Error {
-        case exception
+        case notAFunction
     }
 
     public static let context = JavaScript()
     fileprivate let context = JSContext()!
 
+    var exception: JavaScriptException? {
+        if let exception = context.exception {
+            let object = JSValue(exception)
+            return JavaScriptException(
+                message: object.message.string!,
+                line: object.line.int,
+                column: object.column.int)
+        } else {
+            return nil
+        }
+    }
+
     @discardableResult
     public static func `import`(_ script: String) throws -> JSValue {
         let value = JSValue(context.context.evaluateScript(script))
-        if context.context.exception != nil { throw Error.exception }
+        if let exception = context.exception { throw exception }
         return value
     }
 
@@ -22,12 +34,29 @@ public final class JavaScript {
     }
 }
 
+@dynamicCallable
 @dynamicMemberLookup
 public final class JSValue {
     internal let value: JavaScriptCore.JSValue
 
     fileprivate init(_ value: JavaScriptCore.JSValue) {
         self.value = value
+    }
+}
+
+struct JavaScriptException: Error, CustomStringConvertible, CustomDebugStringConvertible {
+    let message: String
+    let line: Int?
+    let column: Int?
+
+    var description: String {
+        let lineString = line.map(String.init(describing:)) ?? "?"
+        let columnString = column.map(String.init(describing:)) ?? "?"
+        return "\(message) (line: \(lineString), column: \(columnString)"
+    }
+
+    var debugDescription: String {
+        return self.description
     }
 }
 
@@ -139,5 +168,22 @@ public extension JSValue {
         set {
             value.setValue(newValue.value, forProperty: member)
         }
+    }
+}
+
+public extension JSValue {
+    @discardableResult
+    public func dynamicallyCall(withArguments arguments: [JSValue]) throws -> JSValue {
+        let values = arguments.map({ $0.value })
+
+        guard let returnValue = value.call(withArguments: values) else {
+            throw JavaScript.Error.notAFunction
+        }
+
+        if let exception = JavaScript.context.exception {
+            throw exception
+        }
+
+        return JSValue(returnValue)
     }
 }

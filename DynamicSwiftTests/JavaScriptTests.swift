@@ -83,28 +83,28 @@ class JavaScriptTests: XCTestCase {
         XCTAssertEqual(JavaScript.context.conference, "Overriding global scope object!")
     }
 
-//    func testDynamicCallable() throws {
-//        try JavaScript.import("""
-//            var adder = function () {
-//                var total = 0;
-//                return {
-//                    getTotal: function () {
-//                        return total;
-//                    },
-//                    add: function (value) {
-//                        total += value;
-//                    }
-//                };
-//            }();
-//            """)
-//
-//        let adder = JavaScript.context.adder
-//        XCTAssertEqual(try adder.getTotal(), 0)
-//        try adder.add(40)
-//        XCTAssertEqual(try adder.getTotal(), 40)
-//        try adder.add(2)
-//        XCTAssertEqual(try adder.getTotal(), 42)
-//
-//        XCTAssertThrowsError(try adder(), "should throw that adder is not a function")
-//    }
+    func testDynamicCallable() throws {
+        try JavaScript.import("""
+            var adder = function () {
+                var total = 0;
+                return {
+                    getTotal: function () {
+                        return total;
+                    },
+                    add: function (value) {
+                        total += value;
+                    }
+                };
+            }();
+            """)
+
+        let adder = JavaScript.context.adder
+        XCTAssertEqual(try adder.getTotal(), 0)
+        try adder.add(40)
+        XCTAssertEqual(try adder.getTotal(), 40)
+        try adder.add(2)
+        XCTAssertEqual(try adder.getTotal(), 42)
+
+        XCTAssertThrowsError(try adder(), "should throw that adder is not a function")
+    }
 }
