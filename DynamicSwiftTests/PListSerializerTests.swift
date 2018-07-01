@@ -307,53 +307,53 @@ class PListSerializerTests: XCTestCase {
             """)
     }
 
-//    func testCustomization() {
-//        let companions: Any = [
-//            Uppercased(Companion(
-//                name: "Fuki",
-//                age: 8,
-//                race: .dog,
-//                picture: URL(string: "https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0")!)),
-//            Companion(
-//                name: "Gizmo",
-//                age: 11,
-//                race: .cat,
-//                picture: URL(string: "https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0")!),
-//        ]
-//
-//        let serializer = PListSerializer()
-//        var output = ""
-//        serializer.serialize(companions, to: &output)
-//
-//        XCTAssertEqual(output, """
-//            <?xml version="1.0" encoding="UTF-8"?>
-//            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-//            <plist version="1.0">
-//            <array>
-//                <dict>
-//                    <key>AGE</key>
-//                    <integer>8</integer>
-//                    <key>NAME</key>
-//                    <string>Fuki</string>
-//                    <key>PICTURE</key>
-//                    <string>https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0</string>
-//                    <key>RACE</key>
-//                    <string>dog</string>
-//                </dict>
-//                <dict>
-//                    <key>age</key>
-//                    <integer>11</integer>
-//                    <key>name</key>
-//                    <string>Gizmo</string>
-//                    <key>picture</key>
-//                    <string>https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0</string>
-//                    <key>race</key>
-//                    <string>cat</string>
-//                </dict>
-//            </array>
-//            </plist>
-//            """)
-//    }
+    func testCustomization() {
+        let companions: Any = [
+            Uppercased(Companion(
+                name: "Fuki",
+                age: 8,
+                race: .dog,
+                picture: URL(string: "https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0")!)),
+            Companion(
+                name: "Gizmo",
+                age: 11,
+                race: .cat,
+                picture: URL(string: "https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0")!),
+        ]
+
+        let serializer = PListSerializer()
+        var output = ""
+        serializer.serialize(companions, to: &output)
+
+        XCTAssertEqual(output, """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <array>
+                <dict>
+                    <key>AGE</key>
+                    <integer>8</integer>
+                    <key>NAME</key>
+                    <string>Fuki</string>
+                    <key>PICTURE</key>
+                    <string>https://www.dropbox.com/s/u62nkgipj9wsnss/fuki.jpg?dl=0</string>
+                    <key>RACE</key>
+                    <string>dog</string>
+                </dict>
+                <dict>
+                    <key>age</key>
+                    <integer>11</integer>
+                    <key>name</key>
+                    <string>Gizmo</string>
+                    <key>picture</key>
+                    <string>https://www.dropbox.com/s/vryipy7yy6n27ui/gizmo.jpg?dl=0</string>
+                    <key>race</key>
+                    <string>cat</string>
+                </dict>
+            </array>
+            </plist>
+            """)
+    }
 }
 
 extension Date {

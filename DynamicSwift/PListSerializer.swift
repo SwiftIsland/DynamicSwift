@@ -30,6 +30,21 @@ public final class PListSerializer {
     }
 }
 
+public struct Uppercased<T>: CustomReflectable {
+    public let content: T
+
+    public var customMirror: Mirror {
+        let mirror = Mirror(reflecting: content)
+        return Mirror(content, children: mirror.children.map({ child in
+            return (child.label.map({ $0.uppercased() }), child.value)
+        }))
+    }
+
+    public init(_ content: T) {
+        self.content = content
+    }
+}
+
 private let dateFormatter = ISO8601DateFormatter()
 
 private extension PListSerializer {
