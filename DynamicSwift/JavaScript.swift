@@ -1,5 +1,6 @@
 import JavaScriptCore
 
+@dynamicMemberLookup
 public final class JavaScript {
     public enum Error: Swift.Error {
         case exception
@@ -21,6 +22,7 @@ public final class JavaScript {
     }
 }
 
+@dynamicMemberLookup
 public final class JSValue {
     internal let value: JavaScriptCore.JSValue
 
@@ -106,5 +108,36 @@ extension JSValue: Equatable {
 extension JSValue: CustomStringConvertible {
     public var description: String {
         return value.toString()
+    }
+}
+
+public extension JavaScript {
+    subscript(dynamicMember member: String) -> JSValue {
+        get {
+            return JSValue(context.objectForKeyedSubscript(member))
+        }
+        set {
+            context.setObject(newValue.value, forKeyedSubscript: member as NSString)
+        }
+    }
+}
+
+public extension JSValue {
+    public subscript(index: Int) -> JSValue {
+        get {
+            return JSValue(value.atIndex(index))
+        }
+        set {
+            value.setValue(newValue.value, at: index)
+        }
+    }
+
+    public subscript(dynamicMember member: String) -> JSValue {
+        get {
+            return JSValue(value.forProperty(member)!)
+        }
+        set {
+            value.setValue(newValue.value, forProperty: member)
+        }
     }
 }

@@ -54,34 +54,34 @@ class JavaScriptTests: XCTestCase {
         XCTAssertEqual(value.string, "Hello World")
     }
 
-//    func testArrayAccessAndDynamicMemberLookup() throws {
-//        try JavaScript.import("""
-//            var conference = {
-//                name: "Swift Island",
-//                organizers: [
-//                    {
-//                        name: "Niels",
-//                        twitter: "@nvh",
-//                        email: "niels@swiftisland.nl"
-//                    },
-//                    {
-//                        name: "Sidney de Koning",
-//                        twitter: "@sidneydekoning ",
-//                        email: "sidney@swiftisland.nl"
-//                    }
-//                ]
-//            };
-//            """)
-//
-//        let conference = JavaScript.context.conference
-//        XCTAssertEqual(conference.name, "Swift Island")
-//        XCTAssertEqual(conference.organizers[0].name, "Niels")
-//        conference.organizers[0].name = "Niels van Hoorn"
-//        XCTAssertEqual(conference.organizers[0].name, "Niels van Hoorn")
-//
-//        JavaScript.context.conference = "Overriding global scope object!"
-//        XCTAssertEqual(JavaScript.context.conference, "Overriding global scope object!")
-//    }
+    func testArrayAccessAndDynamicMemberLookup() throws {
+        try JavaScript.import("""
+            var conference = {
+                name: "Swift Island",
+                organizers: [
+                    {
+                        name: "Niels",
+                        twitter: "@nvh",
+                        email: "niels@swiftisland.nl"
+                    },
+                    {
+                        name: "Sidney de Koning",
+                        twitter: "@sidneydekoning ",
+                        email: "sidney@swiftisland.nl"
+                    }
+                ]
+            };
+            """)
+
+        let conference = JavaScript.context.conference
+        XCTAssertEqual(conference.name, "Swift Island")
+        XCTAssertEqual(conference.organizers[0].name, "Niels")
+        conference.organizers[0].name = "Niels van Hoorn"
+        XCTAssertEqual(conference.organizers[0].name, "Niels van Hoorn")
+
+        JavaScript.context.conference = "Overriding global scope object!"
+        XCTAssertEqual(JavaScript.context.conference, "Overriding global scope object!")
+    }
 
 //    func testDynamicCallable() throws {
 //        try JavaScript.import("""
