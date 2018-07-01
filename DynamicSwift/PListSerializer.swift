@@ -57,8 +57,13 @@ private extension PListSerializer {
             serialize(array: array, to: &stream, indentationLevel: indentationLevel)
         case let dictionary as [String: Any]:
             serialize(dictionary: dictionary, to: &stream, indentationLevel: indentationLevel)
+        case let stringConvertible as CustomStringConvertible:
+            serialize(
+                string: stringConvertible.description,
+                to: &stream,
+                indentationLevel: indentationLevel)
         default:
-            fatalError("not implemented")
+            serialize(reflecting: object, to: &stream, indentationLevel: indentationLevel)
         }
     }
 
@@ -115,5 +120,13 @@ private extension PListSerializer {
         }
 
         write("</dict>", to: &stream, indentationLevel: indentationLevel)
+    }
+
+    func serialize<T: TextOutputStream>(reflecting object: Any, to stream: inout T, indentationLevel: Int) {
+        let mirror = Mirror(reflecting: object)
+        let dictionary = Dictionary(uniqueKeysWithValues: mirror.children
+            .filter({ label, _ in label != nil })
+            .map({ label, value in (label!, value) }))
+        serialize(dictionary: dictionary, to: &stream, indentationLevel: indentationLevel)
     }
 }

@@ -69,86 +69,86 @@ class PListSerializerTests: XCTestCase {
             """)
     }
 
-//    func testArbitraryTypes() {
-//        let bestTopics = [
-//            Topic(name: "Machine Learning", mentors: [
-//                Mentor(
-//                    name: "Meghan Kane",
-//                    picture: URL(string: "https://swiftisland.nl/assets/images/speakers/speaker-meghan.png")!)
-//            ]),
-//            Topic(name: "ARKit", mentors: [
-//                Mentor(
-//                    name: "Kate Castellano",
-//                    picture: URL(string: "https://swiftisland.nl/assets/images/speakers/speaker-kate.png")!),
-//                Mentor(
-//                    name: "Manu Rink",
-//                    picture: URL(string: "https://swiftisland.nl/assets/images/speakers/speaker-manu.png")!),
-//            ]),
-//            Topic(name: "Playgrounds", mentors: [
-//                Mentor(
-//                    name: "Marijn Schilling",
-//                    picture: URL(string: "https://swiftisland.nl/assets/images/speakers/speaker-marijn.png")!)
-//            ])
-//        ]
-//
-//        let serializer = PListSerializer()
-//        var output = ""
-//        serializer.serialize(bestTopics, to: &output)
-//
-//        XCTAssertEqual(output, """
-//            <?xml version="1.0" encoding="UTF-8"?>
-//            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-//            <plist version="1.0">
-//            <array>
-//                <dict>
-//                    <key>mentors</key>
-//                    <array>
-//                        <dict>
-//                            <key>name</key>
-//                            <string>Meghan Kane</string>
-//                            <key>picture</key>
-//                            <string>https://swiftisland.nl/assets/images/speakers/speaker-meghan.png</string>
-//                        </dict>
-//                    </array>
-//                    <key>name</key>
-//                    <string>Machine Learning</string>
-//                </dict>
-//                <dict>
-//                    <key>mentors</key>
-//                    <array>
-//                        <dict>
-//                            <key>name</key>
-//                            <string>Kate Castellano</string>
-//                            <key>picture</key>
-//                            <string>https://swiftisland.nl/assets/images/speakers/speaker-kate.png</string>
-//                        </dict>
-//                        <dict>
-//                            <key>name</key>
-//                            <string>Manu Rink</string>
-//                            <key>picture</key>
-//                            <string>https://swiftisland.nl/assets/images/speakers/speaker-manu.png</string>
-//                        </dict>
-//                    </array>
-//                    <key>name</key>
-//                    <string>ARKit</string>
-//                </dict>
-//                <dict>
-//                    <key>mentors</key>
-//                    <array>
-//                        <dict>
-//                            <key>name</key>
-//                            <string>Marijn Schilling</string>
-//                            <key>picture</key>
-//                            <string>https://swiftisland.nl/assets/images/speakers/speaker-marijn.png</string>
-//                        </dict>
-//                    </array>
-//                    <key>name</key>
-//                    <string>Playgrounds</string>
-//                </dict>
-//            </array>
-//            </plist>
-//            """)
-//    }
+    func testArbitraryTypes() {
+        let bestTopics = [
+            Topic(name: "Machine Learning", mentors: [
+                Mentor(
+                    name: "Meghan Kane",
+                    picture: URL(string: "https://swiftisland.nl/assets/images/speakers/speaker-meghan.png")!)
+            ]),
+            Topic(name: "ARKit", mentors: [
+                Mentor(
+                    name: "Kate Castellano",
+                    picture: URL(string: "https://swiftisland.nl/assets/images/speakers/speaker-kate.png")!),
+                Mentor(
+                    name: "Manu Rink",
+                    picture: URL(string: "https://swiftisland.nl/assets/images/speakers/speaker-manu.png")!),
+            ]),
+            Topic(name: "Playgrounds", mentors: [
+                Mentor(
+                    name: "Marijn Schilling",
+                    picture: URL(string: "https://swiftisland.nl/assets/images/speakers/speaker-marijn.png")!)
+            ])
+        ]
+
+        let serializer = PListSerializer()
+        var output = ""
+        serializer.serialize(bestTopics, to: &output)
+
+        XCTAssertEqual(output, """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <array>
+                <dict>
+                    <key>mentors</key>
+                    <array>
+                        <dict>
+                            <key>name</key>
+                            <string>Meghan Kane</string>
+                            <key>picture</key>
+                            <string>https://swiftisland.nl/assets/images/speakers/speaker-meghan.png</string>
+                        </dict>
+                    </array>
+                    <key>name</key>
+                    <string>Machine Learning</string>
+                </dict>
+                <dict>
+                    <key>mentors</key>
+                    <array>
+                        <dict>
+                            <key>name</key>
+                            <string>Kate Castellano</string>
+                            <key>picture</key>
+                            <string>https://swiftisland.nl/assets/images/speakers/speaker-kate.png</string>
+                        </dict>
+                        <dict>
+                            <key>name</key>
+                            <string>Manu Rink</string>
+                            <key>picture</key>
+                            <string>https://swiftisland.nl/assets/images/speakers/speaker-manu.png</string>
+                        </dict>
+                    </array>
+                    <key>name</key>
+                    <string>ARKit</string>
+                </dict>
+                <dict>
+                    <key>mentors</key>
+                    <array>
+                        <dict>
+                            <key>name</key>
+                            <string>Marijn Schilling</string>
+                            <key>picture</key>
+                            <string>https://swiftisland.nl/assets/images/speakers/speaker-marijn.png</string>
+                        </dict>
+                    </array>
+                    <key>name</key>
+                    <string>Playgrounds</string>
+                </dict>
+            </array>
+            </plist>
+            """)
+    }
 
 //    func testEnums() {
 //        let companions: Any = [
